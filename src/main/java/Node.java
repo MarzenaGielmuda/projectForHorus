@@ -1,0 +1,50 @@
+import java.util.Objects;
+import java.util.stream.Stream;
+
+public class Node implements INode {
+
+    private final String code;
+    private final  String renderer;
+
+    public Node(String code, String renderer) {
+        this.code = code;
+        this.renderer = renderer;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "code='" + code + '\'' +
+                ", renderer='" + renderer + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return Objects.equals(code, node.code) &&
+                Objects.equals(renderer, node.renderer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, renderer);
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getRenderer() {
+        return renderer;
+    }
+
+    @Override
+    public Stream<INode> iNodeToStream() {
+        return Stream.of(this);
+    }
+}
